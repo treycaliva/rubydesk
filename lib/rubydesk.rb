@@ -3,15 +3,17 @@ require 'rest_client'
 require 'nokogiri'
 require 'uri'
 
-class Rubydesk
+module Rubydesk
 
   # custom errors
   class AlreadyExistedError < StandardError; end
   class ConnectionError < StandardError; end
 
-  attr_accessor :base_url, :freshdesk_api_key
+  class << self
+    attr_accessor :base_url, :freshdesk_api_key
+  end
 
-  def initialize(base_url, freshdesk_api_key='X', username='X', password='X')
+  def self.initialize(base_url, freshdesk_api_key='X', username='X', password='X')
 
     @base_url = base_url
     @freshdesk_api_key = freshdesk_api_key
@@ -26,13 +28,13 @@ class Rubydesk
     end
   end
 
-  def response_format
+  def self.response_format
     @response_format ||= "xml"
   end
 
   # Specify the response format to use--JSON or XML. Currently JSON is only
   # supported for GETs, so other verbs will still use XML.
-  def response_format=(format)
+  def self.response_format=(format)
     unless format.downcase =~ /json|xml/
       raise StandardError "Unsupported format: '#{format}'. Please specify 'xml' or 'json'."
     end
@@ -217,7 +219,7 @@ class Rubydesk
   #   forums => /categories.xml
   #   solutions => /solution/categories.xml
   #   companies => /customers.xml
-  def mapping(method_name, id = nil)
+  def self.mapping(method_name, id = nil)
     case method_name
       when "tickets" then File.join(@base_url + "helpdesk/tickets.xml")
       when "user_ticket" then File.join(@base_url + "helpdesk/tickets/user_ticket.xml")
@@ -232,7 +234,7 @@ class Rubydesk
   end
 
   # match with the root name of xml document that freskdesk uses
-  def doc_name(name)
+  def self.doc_name(name)
     case name
       when "tickets" then "helpdesk_ticket"
       when "ticket_fields" then "helpdesk-ticket-fields"
