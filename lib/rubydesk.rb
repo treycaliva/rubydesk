@@ -3,7 +3,7 @@ require 'rest_client'
 require 'nokogiri'
 require 'uri'
 
-module Rubydesk
+class Rubydesk
 
   # custom errors
   class AlreadyExistedError < StandardError; end
