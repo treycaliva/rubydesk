@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Rubydesk::VERSION
   spec.authors       = ["Trey Caliva"]
   spec.email         = ["trey@directorschoice.travel"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.summary       = "Ruby Gem to connect to Freshdesk API"
+  spec.description   = "Ruby Gem to connect to Freshdesk API"
   spec.homepage      = ""
   spec.license       = "MIT"
 

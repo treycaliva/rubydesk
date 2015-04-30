@@ -1,6 +1,6 @@
 # Rubydesk
 
-TODO: Write a gem description
+Ruby Gem to connect to Freshdesk API
 
 ## Installation
 
@@ -19,8 +19,6 @@ Or install it yourself as:
     $ gem install rubydesk
 
 ## Usage
-
-TODO: Write usage instructions here
 
 ## Contributing
 
